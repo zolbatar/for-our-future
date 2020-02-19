@@ -76,8 +76,14 @@ WSGI_APPLICATION = 'fof.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'da2flbpg8iegpq',
+        'USER': 'omfkvkhsxhsclz',
+        'PASSWORD': '478c1dc119fcf37b0e264648a1e7460005c33a5e33f68c70df19a780a66afadc',
+        'HOST': 'ec2-46-137-84-173.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

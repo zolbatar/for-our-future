@@ -1,0 +1,13 @@
+:root {
+  --background: rgba(178, 236, 177, 0.25);
+  --color1: rgba(178, 236, 177, 1);
+  --color2: rgba(135, 196, 130, 1);
+  --color3: rgba(103, 189, 102, 1);
+  --color4: rgba(70, 140, 68, 1);
+  --color5: rgba(62, 115, 61, 1);
+}
+
+body {
+  font-family: 'Roboto Slab', 'Times New Roman', Times, serif;
+  background-color: var(--background);
+}

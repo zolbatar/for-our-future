@@ -32,13 +32,17 @@ ALLOWED_HOSTS = ['0.0.0.0']
 # Application definition
 
 INSTALLED_APPS = [
+    'broker.apps.BrokerConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms'
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,8 +86,8 @@ DATABASES = {
         'PASSWORD': '478c1dc119fcf37b0e264648a1e7460005c33a5e33f68c70df19a780a66afadc',
         'HOST': 'ec2-46-137-84-173.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #        'ENGINE': 'django.db.backends.sqlite3',
+        #        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

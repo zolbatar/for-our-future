@@ -1,6 +1,8 @@
+from django.views import generic
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .forms import CompanyForm
+from .models import Company
 
 
 def index(request):
@@ -8,20 +10,25 @@ def index(request):
     return render(request, 'broker/index.html', context)
 
 
-def get_company(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = CompanyForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
+def CompanyList(request):
+    companies = Company.objects.all()
+    return render(request, 'broker/company/list.html', {'list': companies})
 
-    # if a GET (or any other method) we'll create a blank form
+def CompanyDelete(request):
+    print(request)
+
+def CompanyEntry(request):
+    if request.method == 'POST':
+        form = CompanyForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            print(name)
+            print(email)
+            c = Company(name=name, email=email)
+            c.save()
+            return HttpResponseRedirect('/')
     else:
         form = CompanyForm()
 
-    return render(request, 'broker/company.html', {'form': form})
+    return render(request, 'broker/company/entry.html', {'form': form})

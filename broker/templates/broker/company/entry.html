@@ -1,6 +1,10 @@
 {% extends "broker/base.html" %} {% block content %} {% include "broker/navbar.html" %}
 
-<form action="company " method="post">
+{% if error_message %}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+<form action="/company" method="post">
   {% csrf_token %}
 
   <div class="container">

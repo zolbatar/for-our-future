@@ -1,4 +1,4 @@
-{% extends "broker/base.html" %} {% block content %} {% include "broker/company/navbar.html" %} {% if list %}
+{% extends "broker/base.html" %} {% block content %} {% include "broker/company/navbar.html" %} {% if companies %}
 <div class="container">
   <table class="table">
     <thead>
@@ -30,7 +30,7 @@
     </tbody>
   </table>
   {% else %}
-  <h1>No product entries found on the database.</h1>
+  <h1>No companies found.</h1>
   {% endif %}
   <div class="col-md-12">
     <form action="{% url 'broker:company-entry'  %}" method="post" style="display: inline;">

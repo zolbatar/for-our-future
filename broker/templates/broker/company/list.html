@@ -1,39 +1,44 @@
-{% if list %} {% for company in list %}
-
-<ul>
-  <li>
-    <h2>Company name:{{ company.name }}</h2>
-    <h2>Contact email:${{ company.email }}</h2>
-    <form
-      action="{% url 'broker:CompanyDelete' company.id %}"
-      method="post"
-      style="display: inline;"
-    >
+{% extends "broker/base.html" %} {% block content %} {% include "broker/company/navbar.html" %} {% if list %}
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Company Name</th>
+        <th scope="col">Contact Email</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for company in list %}
+      <tr>
+        <th scope="row">{{ company.id }}</th>
+        <td>{{ company.name }}</td>
+        <td>{{ company.email }}</td>
+        <td>
+          <form action="{% url 'broker:company-update' company.id  %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-primary btn-sm">Update</button>
+          </form>
+          <form action="{% url 'broker:company-delete' company.id %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <h1>No product entries found on the database.</h1>
+  {% endif %}
+  <div class="col-md-12">
+    <form action="{% url 'broker:company-entry'  %}" method="post" style="display: inline;">
       {% csrf_token %}
-      <button type="submit" class="btn btn-default btn-sm">Delete</button>
+      <button type="submit" class="btn center btn-primary">
+        Make a Product entry here
+      </button>
     </form>
-    <form
-      action="{% url 'modelforms:product-update' product.id  %}"
-      method="post"
-      style="display: inline;"
-    >
-      {% csrf_token %}
-      <button type="submit" class="btn btn-default btn-sm">Update</button>
-    </form>
-  </li>
-</ul>
-
-{% endfor %} {% else %}
-<h1>No product entries found on the database.</h1>
-
-{% endif %}
-<form
-  action="{% url 'modelforms:product-entry'  %}"
-  method="post"
-  style="display: inline;"
->
-  {% csrf_token %}
-  <button type="submit" class="btn btn-default btn-sm">
-    Make a Product entry here
-  </button>
-</form>
+  </div>
+</div>
+{% endblock %}

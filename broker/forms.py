@@ -1,7 +1,15 @@
 from django import forms
-from .models import Company
+from .models import Item, Company
+
+
+class ItemForm(forms.Form):
+    company = forms.ModelChoiceField(Company.objects, empty_label=None)
+    title = forms.CharField()
+    price = forms.DecimalField()
+    units = forms.IntegerField()
+    description = forms.CharField()
 
 
 class CompanyForm(forms.Form):
-    name = forms.CharField(label='Company name', max_length=100)
-    email = forms.EmailField(label='Contact email')
+    name = forms.CharField()
+    email = forms.EmailField()

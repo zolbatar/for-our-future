@@ -4,7 +4,8 @@ from . import views
 app_name = 'broker'
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.ItemList),
+    path('item/entry', views.ItemEntry, name="item-entry"),
 
     # Company - list, entry
     path('company', views.CompanyList),

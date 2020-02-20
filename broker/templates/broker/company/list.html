@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      {% for company in list %}
+      {% for company in companies %}
       <tr>
         <th scope="row">{{ company.id }}</th>
         <td>{{ company.name }}</td>
@@ -36,7 +36,7 @@
     <form action="{% url 'broker:company-entry'  %}" method="post" style="display: inline;">
       {% csrf_token %}
       <button type="submit" class="btn center btn-primary">
-        Make a Product entry here
+        Add a company
       </button>
     </form>
   </div>

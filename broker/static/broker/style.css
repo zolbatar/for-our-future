@@ -5,12 +5,11 @@
   --color3: rgba(103, 189, 102, 1);
   --color4: rgba(70, 140, 68, 1);
   --color5: rgba(62, 115, 61, 1);
-  --border: #888;
+  --border: #CCC;
 }
 
 body {
   font-family: 'Roboto Slab', 'Times New Roman', Times, serif;
-  font-size: 16px;
   background-color: var(--background);
 }
 

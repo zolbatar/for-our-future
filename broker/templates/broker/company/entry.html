@@ -1,6 +1,4 @@
-{% extends "broker/base.html" %} {% block content %} {% include "broker/company/navbar.html" %} 
-
-{% if error_message %}
+{% extends "broker/base.html" %} {% block content %} {% include "broker/company/navbar.html" %} {% if error_message %}
 <p><strong>{{ error_message }}</strong></p>
 {% endif %}
 
@@ -10,12 +8,12 @@
 
     <div class="form-group">
       <label for="id_name">Company name:</label>
-      <input id="id_name" class="form-control" type="text" name="name" maxlength="100" required placeholder="Enter company name" />
+      <input id="id_name" class="form-control" type="text" name="name" maxlength="100" required />
     </div>
 
     <div class="form-group">
       <label for="id_email">Contact email:</label>
-      <input id="id_email" class="form-control" type="email" name="email" required placeholder="Enter email" />
+      <input id="id_email" class="form-control" type="email" name="email" required />
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
 

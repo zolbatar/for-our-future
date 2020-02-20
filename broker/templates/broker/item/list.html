@@ -1,22 +1,25 @@
-{% extends "broker/base.html" %} {% block content %} {% include "broker/item/navbar.html" %} {% if items %} {% for item in items %}
-<div class="card bg-light m-2" style="max-width: 18rem;">
-  <div class="card-header">{{ item.title }}</div>
-  <div class="card-body">
-    <h5 class="card-title">{{ item.company.name }}</h5>
-    <p class="card-text">{{ item.description}}</p>
-    <p class="card-text">£{{ item.price}}</p>
-    <p class="card-text">{{ item.units}}</p>
+{% extends "broker/base.html" %} {% block content %} {% include "broker/item/navbar.html" %}
+<div class="container">
+  {% if items %} {% for item in items %}
+  <div class="card bg-light m-2" style="max-width: 18rem;">
+    <div class="card-header">{{ item.title }}</div>
+    <div class="card-body">
+      <h5 class="card-title">{{ item.company.name }}</h5>
+      <p class="card-text">{{ item.description}}</p>
+      <p class="card-text">£{{ item.price}}</p>
+      <p class="card-text">{{ item.units}}</p>
+    </div>
   </div>
+  {% endfor %} {% else %}
+  <h1>No items found.</h1>
+  {% endif %}
+  <div class="col-md-12">
+    <form action="{% url 'broker:item-entry'  %}" method="post" style="display: inline;">
+      {% csrf_token %}
+      <button type="submit" class="btn center btn-primary">
+        Add a new entry
+      </button>
+    </form>
+  </div>
+  {% endblock %}
 </div>
-{% endfor %} {% else %}
-<h1>No items found.</h1>
-{% endif %}
-<div class="col-md-12">
-  <form action="{% url 'broker:item-entry'  %}" method="post" style="display: inline;">
-    {% csrf_token %}
-    <button type="submit" class="btn center btn-primary">
-      Add a new entry
-    </button>
-  </form>
-</div>
-{% endblock %}
